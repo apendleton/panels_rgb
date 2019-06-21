@@ -1,6 +1,8 @@
 from real_lib import *
 from lib import *
 
+import time
+
 def rainbow():
     hue = 0
     while True:
@@ -20,7 +22,9 @@ def rainbow():
 
 def ripple(duration, from_, to):
     level = 0
-    timer = 0
+
+    start = time.time()
+
     while True:
         level += 0.02
         if level > 1:
@@ -39,8 +43,9 @@ def ripple(duration, from_, to):
         render()
 
         delay(100)
-        timer += .1
-        if timer >= duration:
+
+        elapsed = time.time() - start
+        if elapsed >= duration:
             return
 
 
